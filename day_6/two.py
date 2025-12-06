@@ -39,7 +39,3 @@ if __name__ == "__main__":
     real = run_day("day_6/input.txt")
     print(f"real output: {real}")
     quit()
-    test = run_day("day_6/testinput.txt")
-    print(f"test output: {test}")
-    if test == 3263827:
-        print("Running real input")
