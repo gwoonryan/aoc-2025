@@ -1,5 +1,3 @@
-from tqdm import tqdm
-
 def read_grid(filename) -> tuple[list[list[str]], int, int]:
     lines = []
     with open(filename, "r") as file:
@@ -11,24 +9,8 @@ def read_grid(filename) -> tuple[list[list[str]], int, int]:
     return grid, width, height
 
 
-# def get_all_neighbors_from_cell(grid, x, y, width, height) -> list[tuple[int, int]]:
-#     all_pos: list[tuple[int, int]] = []
-#     for y_offset in (-1, 0, 1):
-#         for x_offset in (-1, 0, 1):
-#             if x_offset == 0 and y_offset == 0:
-#                 continue
-#             if x + x_offset < 0 or x + x_offset >= width:
-#                 continue
-#             if y + y_offset < 0 or y + y_offset >= height:
-#                 continue
-#             all_pos.append((x + x_offset, y + y_offset))
-
-#     return all_pos
-
-
 def run_day(filename) -> int:
     grid, width, height = read_grid(filename)
-    # total_splits = 0
     x_start = grid[0].index("S")
     laser_layers = [dict() for _ in range(height+1)]
     laser_layers[0][x_start] = 1
@@ -43,7 +25,6 @@ def run_day(filename) -> int:
                     laser_layers[y+1][laser_x-1] = laser_layers[y][laser_x]
                 else:
                     laser_layers[y+1][laser_x-1] += laser_layers[y][laser_x]
-                # total_splits += 1
             else:
                 if laser_x not in laser_layers[y+1]:
                     laser_layers[y+1][laser_x] = laser_layers[y][laser_x]
