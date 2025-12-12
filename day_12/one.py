@@ -1,0 +1,1 @@
+print(sum((size[0]//3 * size[1]//3) >= sum(blocks) for size, blocks in [([int(num) for num in line.split(" ")[0][:-1].split("x")], [int(num) for num in line.split(" ")[1:]]) for line in [line.strip() for line in open("day_12/input.txt", 'r').readlines()][30:]]))
